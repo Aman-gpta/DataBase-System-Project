@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style8.css" />
+    <title>Dynamic Table</title>
+  </head>
+  <body>
+    <div class="header">
+      <a href="#" class="logo">Class Admin</a>
+    </div>
+    <div class="dropdown">
+      <div class="select">
+        <span class="selected">Select Classroom</span>
+        <div class="caret"></div>
+      </div>
+
+      <ul class="menu">
+        <li id="room1">1</li>
+        <li id="room2">2</li>
+        <li id="room3">3</li>
+        <li id="room4">4</li>
+        <li id="room5">5</li>
+        <li id="room6">6</li>
+        <li id="room7">7</li>
+        <li id="room8">8</li>
+      </ul>
+    </div>
+    <table class="dynamic" id="dynamic-table">
+      <thead>
+        <tr>
+          <th>room ID</th>
+          <th>Fan</th>
+          <th>Fan Comments</th>
+          <th>AC</th>
+          <th>AC Comments</th>
+          <th>Projector</th>
+          <th>Projector Comments</th>
+          <th>Light</th>
+          <th>Light Comments</th>
+          <th>Day</th>
+          <th>Start Time</th>
+          <th>End Time</th>
+          <th>Course</th>
+        </tr>
+      </thead>
+      <tbody id="table-body"></tbody>
+    </table>
+    <button class="adminbtn" id="adminbtn" onclick="populateTable()" class="adminbtn">
+      Click
+    </button>
+    <script src="./script6.js"></script>
+  </body>
+</html>

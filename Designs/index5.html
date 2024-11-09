@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/Designs/style5.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+    <title>Search Class</title>
+  </head>
+  <body>
+    <div class="header">
+      <a href="#" class="logo">Class Nest</a>
+
+      <nav class="navbar">
+        <a class="navlink" href="./index.html">Home</a>
+        <a class="navlink" href="./index6.html">Maintenance</a>
+        <a class="navlink" href="#">Team</a>
+        <a href="/Designs/index4.html"><button class="login">Back</button></a>
+      </nav>
+    </div>
+
+    <div class="heading1">Book Your Class !</div>
+    <form>
+      <div class="search">
+        <span class="search-icon material-symbols-outlined">Search</span>
+        <input
+          id="classroom_id"
+          class="search-input"
+          type="search"
+          placeholder="Search For Class-Room"
+        />
+      </div>
+    </form>
+    <button onclick="getschedule(event)" class="searchbtn" id="button_search">
+      Search
+    </button>
+    <table>
+      <tr>
+        <td id="rows1col1">-------</td>
+        <td id="rows1col2">-------</td>
+        <td id="rows1col3">-------</td>
+        <td id="rows1col4">-------</td>
+        <td id="rows1col5">-------</td>
+      </tr>
+      <tr>
+        <td id="rows2col1">-------</td>
+        <td id="rows2col2">-------</td>
+        <td id="rows2col3">-------</td>
+        <td id="rows2col4">-------</td>
+        <td id="rows2col5">-------</td>
+      </tr>
+      <tr>
+        <td id="rows3col1">-------</td>
+        <td id="rows3col2">-------</td>
+        <td id="rows3col3">-------</td>
+        <td id="rows3col4">-------</td>
+        <td id="rows3col5">-------</td>
+      </tr>
+      <tr>
+        <td id="rows4col1">-------</td>
+        <td id="rows4col2">-------</td>
+        <td id="rows4col3">-------</td>
+        <td id="rows4col4">-------</td>
+        <td id="rows4col5">-------</td>
+      </tr>
+      <tr>
+        <td id="rows5col1">-------</td>
+        <td id="rows5col2">-------</td>
+        <td id="rows5col3">-------</td>
+        <td id="rows5col4">-------</td>
+        <td id="rows5col5">-------</td>
+      </tr>
+      <tr>
+        <td id="rows6col1">-------</td>
+        <td id="rows6col2">-------</td>
+        <td id="rows6col3">-------</td>
+        <td id="rows6col4">-------</td>
+        <td id="rows6col6">-------</td>
+      </tr>
+    </table>
+    <!-- 2nd Portion  -->
+    <div class="heading1">Enter Details</div>
+
+    <div class="input-box">
+      <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+      <input id="roomid" type="text" required />
+      <label>Room ID</label>
+    </div>
+    <div class="input-box">
+      <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+      <input id="day" type="text" required />
+      <label>Day</label>
+    </div>
+    <div class="input-box">
+      <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+      <input id="start" type="text" required />
+      <label>Starting Time</label>
+    </div>
+    <div class="input-box">
+      <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+      <input id="end" type="text" required />
+      <label>Ending Time</label>
+    </div>
+    <div class="input-box">
+      <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+      <input id="sub" type="text" required />
+      <label>Subject</label>
+    </div>
+    <button onclick="insertSchedule(event)" id="book" class="book">Book</button>
+    <div class="image">
+      ><img src="/Designs/images/undraw_educator_re_ju47 1.svg" alt="image" />
+    </div>
+    <div id="page">
+      <div id="containerloading">
+        <div id="ring"></div>
+        <div id="ring"></div>
+        <div id="ring"></div>
+        <div id="ring"></div>
+        <div id="h3">SQL</div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

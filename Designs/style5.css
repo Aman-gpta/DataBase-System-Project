@@ -1,0 +1,379 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: rgb(253, 219, 218);
+  background: linear-gradient(
+    99deg,
+    rgba(253, 219, 218, 1) 20%,
+    rgba(244, 236, 249, 1) 58%,
+    rgba(255, 255, 255, 1) 98%
+  );
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+table {
+  margin-top: 40px;
+  border-collapse: collapse;
+  width: 40%;
+  margin-left: 80px;
+}
+
+th,
+td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+th {
+  background-color: #4caf50;
+  color: white;
+}
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 99;
+}
+
+.logo {
+  font-size: 2em;
+  text-decoration: none;
+  font-weight: 700;
+  color: black;
+  user-select: none;
+}
+
+.navbar a.navlink {
+  position: relative;
+  font-size: 1.1em;
+  color: black;
+  font-weight: 500;
+  text-decoration: none;
+  margin-left: 45px;
+}
+
+.navbar a.navlink::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  left: 0;
+  background: pink;
+  border-radius: 4px;
+  transform-origin: right;
+  bottom: -6px;
+  transform: scaleX(0);
+  transition: transform 0.5s;
+}
+
+.navbar a.navlink:hover::after {
+  transform-origin: left;
+  transform: scaleX(1);
+}
+
+.navbar .login {
+  width: 130px;
+  height: 50px;
+  background: transparent;
+  border: 2px solid black;
+  outline: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.1em;
+  color: black;
+  margin-left: 40px;
+  transition: 0.5s;
+}
+
+.navbar .login:hover {
+  background-color: black;
+  color: white;
+}
+
+.heading1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: black;
+
+  margin-bottom: 20px;
+  margin-top: 90px;
+  margin-left: 80px;
+}
+
+.search {
+  --padding: 14px;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--padding);
+  border: 2px solid black;
+  border-radius: 28px;
+  transition: box-shadow 0.25s;
+  margin-left: 60px;
+}
+
+.search:focus-within {
+  box-shadow: lightpink;
+  filter: brightness(120%);
+}
+
+.search-input {
+  font-size: 16px;
+  font-family: "Lexend", sans-serif;
+  color: Black;
+  margin-left: var(--padding);
+  outline: none;
+  border: none;
+  background: transparent;
+  width: 500px;
+}
+
+.search-input::placeholder {
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.heading2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: black;
+
+  margin-bottom: 20px;
+  margin-top: 40px;
+  margin-left: 80px;
+}
+
+.container1 {
+  width: 300px;
+}
+
+.entryarea {
+  position: relative;
+  height: 80px;
+  line-height: 80px;
+}
+
+.container1 input {
+  position: absolute;
+  width: 100%;
+  outline: none;
+  font-size: 1em;
+  padding: 0 30px;
+  margin-left: 80px;
+  line-height: 30px;
+  border-radius: 10px;
+  border: 2px solid black;
+  background: transparent;
+  transition: 0.1s ease;
+  z-index: 999;
+}
+
+.labelline {
+  font-size: 0.8em;
+  color: black;
+  padding: 0 25px;
+  margin: 0 20px;
+  margin-left: 80px;
+  transition: 0.2 ease;
+}
+
+.container1 input:focus + .labelline {
+  transform: translateY(-50px);
+  font-size: 0.8em;
+  color: black;
+}
+.input-box {
+  position: relative;
+  width: 450px;
+  height: 50px;
+  border-bottom: 2px solid black;
+  margin: 30px 0;
+  margin-left: 80px;
+}
+.input-box label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  font-size: 1em;
+  color: black;
+  font-weight: 500;
+  pointer-events: none;
+  transition: 0.5s;
+}
+.input-box input:focus ~ label,
+.input-box input:valid ~ label {
+  top: -5px;
+}
+.input-box input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  border-bottom: 2px solid black;
+  color: black;
+  font-weight: 600;
+  padding: 0 35px 0 5px;
+}
+.input-box .icon {
+  position: absolute;
+  right: 8px;
+  font-size: 1.2em;
+  color: black;
+  line-height: 57px;
+}
+.book {
+  width: 130px;
+  height: 50px;
+  background: transparent;
+  border: 2px solid black;
+  outline: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.1em;
+  color: black;
+  margin-left: 220px;
+  transition: 0.5s;
+  margin-bottom: 30px;
+}
+.book:hover {
+  background-color: black;
+  color: white;
+}
+/* .book a {
+    text-decoration: none;
+    color: black;
+} */
+
+.image {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(0, -50%);
+}
+.searchbtn {
+  margin-top: 11px;
+  width: 130px;
+  height: 50px;
+  background: transparent;
+  border: 2px solid black;
+  outline: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.1em;
+  color: black;
+  margin-left: 270px;
+  transition: 0.5s;
+}
+.searchbtn:hover {
+  background-color: black;
+  color: white;
+}
+#page {
+  position: absolute;
+  top: 30%;
+  right: 18%;
+}
+
+#containerloading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+#h3 {
+  color: black;
+  font-weight: 500;
+}
+
+#ring {
+  width: 130px;
+  height: 130px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  position: absolute;
+}
+
+#ring:nth-child(1) {
+  border-bottom: 8px solid rgb(255, 141, 249);
+  animation: rotate1 2s linear infinite;
+}
+
+@keyframes rotate1 {
+  from {
+    transform: rotateX(50deg) rotateZ(110deg);
+  }
+
+  to {
+    transform: rotateX(50deg) rotateZ(470deg);
+  }
+}
+
+#ring:nth-child(2) {
+  border-bottom: 8px solid rgb(255, 65, 106);
+  animation: rotate2 2s linear infinite;
+}
+
+@keyframes rotate2 {
+  from {
+    transform: rotateX(20deg) rotateY(50deg) rotateZ(20deg);
+  }
+
+  to {
+    transform: rotateX(20deg) rotateY(50deg) rotateZ(380deg);
+  }
+}
+
+#ring:nth-child(3) {
+  border-bottom: 8px solid rgb(0, 255, 255);
+  animation: rotate3 2s linear infinite;
+}
+
+@keyframes rotate3 {
+  from {
+    transform: rotateX(40deg) rotateY(130deg) rotateZ(450deg);
+  }
+
+  to {
+    transform: rotateX(40deg) rotateY(130deg) rotateZ(90deg);
+  }
+}
+
+#ring:nth-child(4) {
+  border-bottom: 8px solid rgb(252, 183, 55);
+  animation: rotate4 2s linear infinite;
+}
+
+@keyframes rotate4 {
+  from {
+    transform: rotateX(70deg) rotateZ(270deg);
+  }
+
+  to {
+    transform: rotateX(70deg) rotateZ(630deg);
+  }
+}

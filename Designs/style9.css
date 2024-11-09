@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: rgb(253, 219, 218);
+  background: linear-gradient(
+    99deg,
+    rgba(253, 219, 218, 1) 20%,
+    rgba(244, 236, 249, 1) 58%,
+    rgba(255, 255, 255, 1) 98%
+  );
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.heading1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: black;
+
+  margin-bottom: 20px;
+  margin-top: 90px;
+  margin-left: 640px;
+}
+
+.maincontainer {
+  margin-top: 5%;
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  align-items: center;
+  align-content: space-between;
+  
+}
+
+.container {
+  height: 320px;
+  width: 240px;
+  color: white;
+  perspective: 800px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  background: black;
+  border-radius: 2rem;
+  position: relative;
+  transition: transform 1500ms;
+  transform-style: preserve-3d;
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10%;
+  position: absolute;
+  width: 50%;
+  background-color: transparent;
+  border: 2px solid black;
+  top: 0;
+  border-top: none;
+  border-radius: 0 0 1rem 1rem;
+  box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.7);
+}
+
+.card-top-para {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.container:hover > .card {
+  cursor: pointer;
+  transform: rotateX(180deg) rotateZ(-180deg);
+}
+
+.front,
+.back {
+  height: 100%;
+  width: 100%;
+  border-radius: 2rem;
+  box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.7);
+  position: absolute;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.back {
+  background-color: black;
+  transform: rotateX(180deg) rotateZ(-180deg);
+}
+
+.heading {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.follow {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.icons {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin-top: 20px;
+}

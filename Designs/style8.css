@@ -1,0 +1,214 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  /* display: flex; */
+  min-height: 100vh;
+  background: rgb(253, 219, 218);
+  background: linear-gradient(
+    99deg,
+    rgba(253, 219, 218, 1) 20%,
+    rgba(244, 236, 249, 1) 58%,
+    rgba(255, 255, 255, 1) 98%
+  );
+  justify-content: center;
+  align-items: center;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+.header {
+  position: absolute;
+  top: 3%;
+  left: 0;
+  width: 100%;
+  padding: 20px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 99;
+}
+.logo {
+  font-size: 2em;
+  text-decoration: none;
+  font-weight: 700;
+  color: black;
+  user-select: none;
+}
+.navbar a.navlink {
+  position: relative;
+  font-size: 1.1em;
+  color: black;
+  font-weight: 500;
+  text-decoration: none;
+  margin-left: 45px;
+}
+
+.navbar a.navlink::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  left: 0;
+  background: pink;
+  border-radius: 4px;
+  transform-origin: right;
+  bottom: -6px;
+  transform: scaleX(0);
+  transition: transform 0.5s;
+}
+
+.navbar a.navlink:hover::after {
+  transform-origin: left;
+  transform: scaleX(1);
+}
+.navbar .login {
+  width: 130px;
+  height: 50px;
+  background: transparent;
+  border: 2px solid black;
+  outline: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.1em;
+  color: black;
+  margin-left: 40px;
+  transition: 0.5s;
+}
+.navbar .login:hover {
+  background-color: black;
+  color: white;
+}
+.heading {
+  font-size: 2rem;
+  font-weight: 700;
+  color: black;
+
+  margin-bottom: 20px;
+  margin-top: 90px;
+  margin-left: 80px;
+}
+.dropdown {
+  box-sizing: border-box;
+}
+.select {
+  margin-top: 8%;
+  background: black;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 0.5em;
+  padding: 1em;
+  cursor: pointer;
+  transition: background 0.3s;
+  width: 15em;
+  margin-left: 90px;
+}
+
+.select-clicked {
+  border: 2px solid black;
+  box-shadow: 0, 0, 0.8em, black;
+}
+.select-hover {
+  background: black;
+}
+.caret {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid white;
+  transition: 0.3s;
+}
+.caret-rotate {
+  transform: rotate(180deg);
+}
+.menu {
+  list-style: none;
+  padding: 0.2em 0.5em;
+  background-color: black;
+  border: 1px black solid;
+  color: white;
+  box-shadow: 0, 0.5, 1em, black;
+  position: absolute;
+  top: 3em;
+  left: 50%;
+  width: 15em;
+  left: 30.4%;
+  transform: translateX(-154.5%);
+  opacity: 0;
+  display: none;
+  transition: 0.2s;
+  z-index: 1;
+  border-radius: 20px;
+  top: 22%;
+}
+
+.menu li {
+  padding: 0.7em 0.5em;
+  margin: 0.3em 0;
+  border-radius: 0.5em;
+  cursor: pointer;
+}
+
+.menu li:hover {
+  background-color: white;
+  color: black;
+}
+.active {
+  background: black;
+  color: white;
+}
+.menu-open {
+  display: block;
+  opacity: 1;
+}
+.dynamic {
+  margin-top: 5%;
+  width: 100%;
+  border-collapse: collapse;
+}
+#dynamic-table th,
+#dynamic-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+#dynamic-table th {
+  background-color: black;
+  color: white;
+}
+#dynamic-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+#dynamic-table tbody tr:hover {
+  background-color: #ddd;
+}
+.adminbtn {
+  width: 130px;
+  height: 50px;
+  background: transparent;
+  border: 2px solid black;
+  outline: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.1em;
+  color: black;
+  margin-left: 40%;
+  transition: 0.5s;
+  margin-bottom: 30px;
+  margin-top: 10%;
+}
+.adminbtn:hover {
+  background-color: black;
+  color: white;
+}

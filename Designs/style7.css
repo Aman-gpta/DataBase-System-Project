@@ -1,0 +1,175 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  /* display: flex; */
+  min-height: 100vh;
+  background: rgb(253, 219, 218);
+  background: linear-gradient(
+    99deg,
+    rgba(253, 219, 218, 1) 20%,
+    rgba(244, 236, 249, 1) 58%,
+    rgba(255, 255, 255, 1) 98%
+  );
+  justify-content: center;
+  align-items: center;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+.heading1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: black;
+
+  margin-bottom: 20px;
+  margin-top: 90px;
+  margin-left: 80px;
+}
+
+.card1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  max-width: 90%;
+  color: black;
+  text-align: center;
+  padding: 50px;
+  border: 1px solid black;
+  border-radius: 15px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px);
+}
+
+.card1 h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.card1 p {
+  font-size: 18px;
+  line-height: 1.5;
+}
+.card2 {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  max-width: 90%;
+  color: black;
+  text-align: center;
+  padding: 50px;
+  border: 1px solid black;
+  border-radius: 15px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px);
+}
+
+.card2 h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.card2 p {
+  font-size: 18px;
+  line-height: 1.5;
+}
+.card3 {
+  position: absolute;
+  top: 158%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  max-width: 90%;
+  color: black;
+  text-align: center;
+  padding: 50px;
+  border: 1px solid black;
+  border-radius: 15px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px);
+}
+
+.card3 h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.card3 p {
+  font-size: 18px;
+  line-height: 1.5;
+}
+.newlines {
+  margin-top: 19px;
+  font-size: 18px;
+  line-height: 1.5;
+}
+/* Path: Designs/style8.css */
+.loader {
+  width: 12em;
+  height: 3em;
+  left: 3%;
+
+  position: relative;
+  overflow: hidden;
+  border-bottom: 8px solid #000;
+  filter: url(#goo);
+}
+
+.loader::before {
+  content: "";
+  width: 22em;
+  height: 18em;
+  background: #f00;
+  position: absolute;
+  border-radius: 50%;
+  left: -2em;
+  bottom: -18em;
+  animation: wee1 2s linear infinite;
+}
+
+.loader::after {
+  content: "";
+  width: 16em;
+  height: 12em;
+  background: #0ff;
+  position: absolute;
+  border-radius: 50%;
+  left: -4em;
+  bottom: -12em;
+  animation: wee2 2s linear infinite 0.75s;
+}
+
+@keyframes wee1 {
+  0% {
+    transform: translateX(-10em) rotate(0deg);
+  }
+
+  100% {
+    transform: translateX(7em) rotate(180deg);
+  }
+}
+
+@keyframes wee2 {
+  0% {
+    transform: translateX(-8em) rotate(0deg);
+  }
+
+  100% {
+    transform: translateX(8em) rotate(180deg);
+  }
+}
+
+

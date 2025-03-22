@@ -1,191 +1,174 @@
+require('dotenv').config();
 const express = require('express');
-const pool = require('./db');
-const cors = require('cors')
+const cors = require('cors');
+const mongoose = require('mongoose');
 const app = express();
+
+// Middleware
 app.use(express.json());
 app.use(cors());
-app.listen(4000, () => {
-    console.log('listening on 4000');
+
+// MongoDB Connection
+mongoose.connect(process.env.MONGODB_URI)
+    .then(() => console.log('Connected to MongoDB Atlas'))
+    .catch(err => console.error('MongoDB connection error:', err));
+
+// Define Schemas
+const signupSchema = new mongoose.Schema({
+    username: { type: String, required: true, unique: true },
+    email: { type: String, required: true },
+    password: { type: String, required: true }
 });
-app.get('/UserData/:id', async(req, res) => {
-    try{
+
+const scheduleSchema = new mongoose.Schema({
+    classroom_id: { type: String, required: true },
+    day: { type: String, required: true },
+    start_time: { type: String, required: true },
+    end_time: { type: String, required: true },
+    course: { type: String, required: true }
+});
+
+const applySchema = new mongoose.Schema({
+    id: { type: String, required: true },
+    fan: { type: Boolean, default: false },
+    fan_comments: { type: String },
+    ac: { type: Boolean, default: false },
+    ac_comments: { type: String },
+    projector: { type: Boolean, default: false },
+    projector_comments: { type: String },
+    light: { type: Boolean, default: false },
+    light_comments: { type: String }
+});
+
+// Create Models
+const User = mongoose.model('User', signupSchema);
+const Schedule = mongoose.model('Schedule', scheduleSchema);
+const Apply = mongoose.model('Apply', applySchema);
+
+// Routes
+// Get User Data by username
+app.get('/UserData/:id', async (req, res) => {
+    try {
         const { id } = req.params;
-        const user = await pool.query('SELECT * FROM signup where username = $1', [id]);
-        if (user.rows.length === 0) {
-            // Return an empty array if no user is found
-            console.log(user.rows[0]);
-            res.json([]);
-        } else {
-            // Return the user data if found
-            console.log(user.rows[0]);
-            res.json(user.rows[0]);
+        const user = await User.findOne({ username: id });
+
+        if (!user) {
+            console.log('No user found');
+            return res.json([]);
         }
-        
-        console.log(user.rows[0]);
-    
-    }catch(err){
+
+        console.log(user);
+        res.json(user);
+    } catch (err) {
         console.error(err);
+        res.status(500).json({ error: 'Server error' });
     }
 });
 
-app.post('/UserData', async(req, res) => {
-    try{
+// Create new user
+app.post('/UserData', async (req, res) => {
+    try {
         const { username, email, password } = req.body;
-        const newUser = await pool.query('INSERT INTO signup (username,email, password) VALUES ($1, $2, $3) RETURNING *', [username, email, password]);
-        res.json(newUser.rows[0]);
-    }catch(err){
+        const newUser = new User({ username, email, password });
+        const savedUser = await newUser.save();
+        res.json(savedUser);
+    } catch (err) {
         console.error(err);
+        res.status(500).json({ error: 'Server error' });
     }
 });
-app.get('/UserData/:id', async(req, res) => {
-    try{
-        const { id } = req.params;
-        const user = await pool.query('SELECT * FROM signup where username = $1', [id]);
-        if (user.rows.length === 0) {
-           
-            
-            res.json([]);
-        } else {
-            
-            console.log(user.rows[0]);
-            res.json(user.rows[0]);
-        }
-        
-        console.log(user.rows[0]);
-    
-    }catch(err){
-        console.error(err);
-    }
-});
-app.post('/schedule', async(req, res) => {
-    try{
+
+// Create schedule
+app.post('/schedule', async (req, res) => {
+    try {
         const { classroom_id, day, start_time, end_time, course } = req.body;
-        const newUser = await pool.query('INSERT INTO schedule (classroom_id, day, start_time, end_time, course) VALUES ($1, $2, $3, $4, $5) RETURNING *', [classroom_id, day, start_time, end_time, course]);
-        res.json(newUser.rows[0]);
-    }catch(err){
+        const newSchedule = new Schedule({ classroom_id, day, start_time, end_time, course });
+        const savedSchedule = await newSchedule.save();
+        res.json(savedSchedule);
+    } catch (err) {
         console.error(err);
+        res.status(500).json({ error: 'Server error' });
     }
-}
-);
-app.get('/schedule/:id', async(req, res) => {
-    try{
+});
+
+// Get schedule by classroom_id
+app.get('/schedule/:id', async (req, res) => {
+    try {
         const { id } = req.params;
-        const user = await pool.query('SELECT * FROM schedule where classroom_id = $1', [id]);
-        if (user.rows.length === 0) {
-           
-            
-            res.json([]);
-        } else {
-            
-            console.log(user.rows);
-            res.json(user.rows);
+        const schedules = await Schedule.find({ classroom_id: id });
+
+        if (schedules.length === 0) {
+            return res.json([]);
         }
-        
-        console.log(user.rows[0]);
-    
-    }catch(err){
+
+        console.log(schedules);
+        res.json(schedules);
+    } catch (err) {
         console.error(err);
+        res.status(500).json({ error: 'Server error' });
     }
-}
-);
-app.post('/submit', async(req, res) => {
-    try{
+});
+
+// Submit application
+app.post('/submit', async (req, res) => {
+    try {
         const { id, fan, fan_comments, ac, ac_comments, projector, projector_comments, light, light_comments } = req.body;
-        const newUser = await pool.query('INSERT INTO apply (id, fan, fan_comments, ac, ac_comments, projector, projector_comments, light, light_comments) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *', [id, fan, fan_comments, ac, ac_comments, projector, projector_comments, light, light_comments]);   
-        res.json(newUser.rows[0]);
-    }catch(err){
+        const newApply = new Apply({
+            id,
+            fan,
+            fan_comments,
+            ac,
+            ac_comments,
+            projector,
+            projector_comments,
+            light,
+            light_comments
+        });
+        const savedApply = await newApply.save();
+        res.json(savedApply);
+    } catch (err) {
         console.error(err);
+        res.status(500).json({ error: 'Server error' });
     }
-}
-);
+});
 
-app.get('/admindata/:id', async(req, res) => {
-    try{
+// Get admin data (joining apply and schedule collections)
+app.get('/admindata/:id', async (req, res) => {
+    try {
         const { id } = req.params;
-        const user = await pool.query('SELECT * FROM apply,schedule where apply.id = schedule.classroom_id and apply.id = $1', [id]);
-        if (user.rows.length === 0) {
-           
-            
-            res.json([]);
-        } else {
-            
-            console.log(user.rows);
-            res.json(user.rows);
+
+        // In MongoDB, we need to do this join manually since it's not relational
+        const applyData = await Apply.findOne({ id });
+
+        if (!applyData) {
+            return res.json([]);
         }
-        
-        console.log(user.rows[0]);
-    
-    }catch(err){
+
+        const scheduleData = await Schedule.find({ classroom_id: id });
+
+        if (scheduleData.length === 0) {
+            return res.json([]);
+        }
+
+        // Combine the data to mimic the PostgreSQL join
+        const result = scheduleData.map(schedule => {
+            // Create a combined object that includes fields from both collections
+            return {
+                ...schedule.toObject(),
+                ...applyData.toObject()
+            };
+        });
+
+        console.log(result);
+        res.json(result);
+    } catch (err) {
         console.error(err);
+        res.status(500).json({ error: 'Server error' });
     }
-}
-);
+});
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// let connection;
-// app.listen(5000, async() => {
-//     connection = await oracle.getConnection({
-//     user: 'HR',
-//     password: '123',
-//     connectString: 'localhost/xe'
-// });
-
-    
-//     console.log('listening on 5000')});
-// app.get('/', (req, res) => {
-//     res.send('Hello World');
-// }   );
- 
-// app.get('/UserData/:username', (req, res) => {
-//     async function getData(){
-//         try{
-//             const res = await connection.execute('SELECT * FROM HR.signup WHERE USERNAME = :username', [req.params.username], {outFormat: oracle.OUT_FORMAT_OBJECT});
-//             return res.rows;
-//         }catch(err){
-//             console.error(err);
-//         }   
-//     }
-//     getData().then((result) => {
-//         res.send(result);
-//     }).catch((err) => {
-//         res.send(err);
-//     });
-// });
-// app.post('/UserData', (req, res) => {
-//     async function postData(){
-//         try{
-//             const res = await connection.execute('INSERT INTO HR.signup (USERNAME, PASSWORD) VALUES (:username, :password)', [req.body.username, req.body.password], {autoCommit: true});
-//             return res;
-//         }catch(err){
-//             console.error(err);
-//         }
-//     }
-//     postData().then((result) => {
-//         res.send(result);
-//     }).catch((err) => {
-//         res.send(err);
-//     });
-// });
-
+// Start server
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => {
+    console.log(`Server listening on port ${PORT}`);
+});

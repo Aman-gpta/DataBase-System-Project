@@ -1,4 +1,4 @@
-let API_URL = "http://localhost:4000/";
+let API_URL = "https://database-system-project.onrender.com/";
 
 //signup
 let myfunction = async(event) =>{   
